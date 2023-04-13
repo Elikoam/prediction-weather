@@ -26,7 +26,7 @@ li {
 }
 
 .weather-app {
-    background-color: rgb(131, 187, 222);
+    background: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
     max-width: 600px;
     margin: 0px auto;
     margin-top: 60px;
