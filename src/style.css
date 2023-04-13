@@ -1,12 +1,21 @@
-body{
+body {
     font-family: arial, sans-serif;
 }
-ul{
+
+img {
+    height: 90px;
+    width: 90px;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul {
     margin: 0;
     padding: 0;
 
 }
-li{
+
+li {
     list-style: none;
     color: #ffffff;
     font-size: 15px;
@@ -15,7 +24,8 @@ li{
     margin: 0;
     padding: 0;
 }
-.weather-app{
+
+.weather-app {
     background-color: rgb(131, 187, 222);
     max-width: 600px;
     margin: 0px auto;
@@ -24,20 +34,44 @@ li{
     border: 1px solid #dadde1;
     border-radius: 10px;
 }
-.h1{
+
+.h1 {
     color: #ffffff;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 100;
     line-height: 20px;
     margin-bottom: 0px;
 }
-.h2{color: #ffffff;
-    font-size: 18px;
+
+.h2 {
+    color: #ffffff;
+    font-size: 20px;
     font-weight: 100;
     line-height: 39px;
 
 }
-.source{
-    text-align: center;
-    font-size: 15px;
+
+.source {
+    font-size: 10px;
+    max-width: 600px;
+    margin: 5px auto;
+
+}
+
+.weather-discription {
+    margin-top: 15px;
+    padding: 0px;
+}
+
+.temperature strong {
+    color: #ffffff;
+    font-size: 40px;
+    line-height: 1;
+}
+
+.units {
+    color: #ffffff;
+    font-size: 14px;
+    position: relative;
+    top: -15px;
 }
