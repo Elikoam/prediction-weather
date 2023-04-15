@@ -24,6 +24,9 @@ li {
     margin: 0;
     padding: 0;
 }
+li:first-letter{
+    text-transform: capitalize;
+}
 
 .weather-app {
     background: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
