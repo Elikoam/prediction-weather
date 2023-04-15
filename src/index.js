@@ -31,7 +31,8 @@ function showTemperature(response){
     let windElement=document.querySelector("#wind");
     let dateElement=document.querySelector("#date");
     let iconElement=document.querySelector("#icon");
-    console.log(response.data.weather);
+    
+    celsiusTemperature = response.data.main.temp;
 
     temperatureElement.innerHTML=Math.round(response.data.main.temp);
     cityElement.innerHTML=response.data.name;
@@ -43,7 +44,43 @@ function showTemperature(response){
     iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-let apiKey = "34ae1065362d42545661451bda2b8a1f";
-let city ="sarab";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(showTemperature);
+function submit(event){
+    event.preventDefault();
+    let cityInputElement=document.querySelector("#city-input");
+    search(cityInputElement.value);
+}
+function search(city) {
+    let apiKey = "34ae1065362d42545661451bda2b8a1f";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(showTemperature);
+}
+
+function showFahrenheitTemperature(event){
+    event.preventDefault();
+    let temperatureElement=document.querySelector("#temperature");
+    celsiuslink.classList.remove("active");
+    fahrenheitlink.classList.add("active");
+    let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
+    temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
+}
+function showCelsiusTemperature(event){
+    event.preventDefault();
+    let temperatureElement=document.querySelector("#temperature");
+    celsiuslink.classList.add("active");
+    fahrenheitlink.classList.remove("active");
+    temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature= null;
+
+let form =document.querySelector("#search-city");
+form.addEventListener("submit", submit);
+
+let fahrenheitlink=document.querySelector("#fahrenheit-link");
+fahrenheitlink.addEventListener("click", showFahrenheitTemperature);
+
+let celsiuslink=document.querySelector("#celsius-link");
+celsiuslink.addEventListener("click", showCelsiusTemperature);
+
+
+search("Tehran");

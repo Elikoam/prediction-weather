@@ -13,6 +13,16 @@
 <body>
     <div class="container">
         <div class="weather-app">
+        <form id="search-city" class="mb-3">
+            <div class="row">
+                <div class="col-9">
+            <input type="search" placeholder="Type a city ..." autocomplete="off" class="form-control" id="city-input"/>
+            </div>
+            <div class="col-3">
+            <input type="submit" value="Search" class="btn btn-primary w-100"/>
+            </div>
+            </div>
+        </form>
         <div class="row">
             <div class="col-6" >
                 <ul>
@@ -21,7 +31,7 @@
                 </ul>
             </div>
             <div class="col-6 align-self-start temperature">
-                <strong id="temperature"></strong> <span class="units">°C | <a href="">°F</a></span>
+                <strong id="temperature"></strong> <span class="units"><a href="" id="celsius-link" class="active">°C </a>| <a href="" id="fahrenheit-link">°F</a></span>
             </div>
         </div>
             <div class="row">
