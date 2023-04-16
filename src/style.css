@@ -29,7 +29,7 @@ li:first-letter{
 }
 
 .weather-app {
-    background: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
+    background: linear-gradient(-335deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
     max-width: 600px;
     margin: 0px auto;
     margin-top: 60px;
@@ -93,4 +93,45 @@ li:first-letter{
 
 .active:hover {
     text-decoration: none;
+}
+
+.prediction-title{
+    font-size: 15px;
+    color: #ffffff;
+    font-family:arial,sans-serif; 
+    margin: 10px auto;
+    font-weight: 100;
+    line-height: 19px;
+    padding: 0;
+}
+
+.card{
+    background:linear-gradient(-335deg, #5D9FFF 0%, #B8DCFF 70%, #a5d5ff 100%);
+    border:1px solid #a5d5ff;
+}
+
+#weather-prediction-day{
+    font-size: 16px;
+    text-align: center;
+    color: #ffffff;
+    font-family: arial, sans-serif;
+    margin: 10px auto;
+    font-weight: 100;
+    line-height: 19px;
+    padding: 0;
+
+}
+.weather-temperature{
+    text-align: center;
+    color: #ffffff;
+    font-family: arial, sans-serif;
+    margin: 10px auto;
+    font-weight: 100;
+    line-height: 19px;
+    padding: 0;
+    font-size: 13px;
+
+}
+.weather-temperature-prediction-min {
+    opacity: 0.7;
 }
