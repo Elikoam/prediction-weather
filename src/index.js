@@ -90,37 +90,53 @@ fahrenheitlink.addEventListener("click", showFahrenheitTemperature);
 let celsiuslink=document.querySelector("#celsius-link");
 celsiuslink.addEventListener("click", showCelsiusTemperature);
 
+function formatDay(timestamp){
+    let date = new Date(timestamp * 1000);
+    let day = date.getDay();
+    let days =[
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat"   
+    ];
+    return days[day];
+}
+
 function displayforecast(response){
-    console.log(response.data.daily);
+    let forcast= response.data.daily;
     let forecastElement= document.querySelector("#weather-temperature-prediction");
-    let days = ["sun", "mon"];
+
     let forecastHTML= `<div class="row">`;
-    days.forEach (function(day){
-    forecastHTML=forecastHTML +
+    forcast.forEach (function(forcastDay, index){
+        if (index < 6) {
+    forecastHTML=
+            forecastHTML +
                 `
                <div class="col-2">
                 <div class="card" style="width: 5rem;">
                     <div class="card-body" id="weather-prediction-day">
-                        ${day}
+                        ${formatDay(forcastDay.dt)}
                     </div>
-                    <img src="http://openweathermap.org/img/wn/50d@2x.png" class="card-img-top" id="icon-prediction" alt="..."/>
+                    <img src="http://openweathermap.org/img/wn/${forcastDay.weather[0].icon}@2x.png" class="card-img-top" id="icon-prediction" alt="..."/>
                     <div class="weather-temperature">
                     <spn class="weather-temperature-prediction-max">
-                    18°   </spn>
+                    ${Math.round(forcastDay.temp.max)}°   </spn>
                      <span class="weather-temperature-prediction-min">
-                    12°
+                    ${Math.round(forcastDay.temp.min)}°
                      </span>
                     </div>
                     </div>
             </div> `
             ;
+            }
     });
 
     forecastHTML = forecastHTML + `</div>`;
     forecastElement.innerHTML =forecastHTML;
-    console.log(forecastHTML);
 }
 
 
 search("Tehran");
-displayforecast();
