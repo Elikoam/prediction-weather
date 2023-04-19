@@ -22,7 +22,7 @@ function formatDate(timestamp){
 
 }
 
-function getforcast (coordinates){
+function getforecast (coordinates){
     let apikey= "34ae1065362d42545661451bda2b8a1f";
     let apiUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apikey}&units=metric` 
     console.log(apiUrl);
@@ -49,7 +49,7 @@ function showTemperature(response){
     iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     iconElement.setAttribute("alt", response.data.weather[0].description);
 
-    getforcast(response.data.coord);
+    getforecast(response.data.coord);
 }
 
 function submit(event){
@@ -79,17 +79,6 @@ function showCelsiusTemperature(event){
     temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
-let celsiusTemperature= null;
-
-let form =document.querySelector("#search-city");
-form.addEventListener("submit", submit);
-
-let fahrenheitlink=document.querySelector("#fahrenheit-link");
-fahrenheitlink.addEventListener("click", showFahrenheitTemperature);
-
-let celsiuslink=document.querySelector("#celsius-link");
-celsiuslink.addEventListener("click", showCelsiusTemperature);
-
 function formatDay(timestamp){
     let date = new Date(timestamp * 1000);
     let day = date.getDay();
@@ -106,11 +95,11 @@ function formatDay(timestamp){
 }
 
 function displayforecast(response){
-    let forcast= response.data.daily;
+    let forecast= response.data.daily;
     let forecastElement= document.querySelector("#weather-temperature-prediction");
 
     let forecastHTML= `<div class="row">`;
-    forcast.forEach (function(forcastDay, index){
+    forecast.forEach (function(forecastDay, index){
         if (index < 6) {
     forecastHTML=
             forecastHTML +
@@ -118,14 +107,14 @@ function displayforecast(response){
                <div class="col-2">
                 <div class="card" style="width: 5rem;">
                     <div class="card-body" id="weather-prediction-day">
-                        ${formatDay(forcastDay.dt)}
+                        ${formatDay(forecastDay.dt)}
                     </div>
-                    <img src="http://openweathermap.org/img/wn/${forcastDay.weather[0].icon}@2x.png" class="card-img-top" id="icon-prediction" alt="..."/>
+                    <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" class="card-img-top" id="icon-prediction" alt="..."/>
                     <div class="weather-temperature">
                     <spn class="weather-temperature-prediction-max">
-                    ${Math.round(forcastDay.temp.max)}°   </spn>
+                    ${Math.round(forecastDay.temp.max)}°   </spn>
                      <span class="weather-temperature-prediction-min">
-                    ${Math.round(forcastDay.temp.min)}°
+                    ${Math.round(forecastDay.temp.min)}°
                      </span>
                     </div>
                     </div>
@@ -137,6 +126,18 @@ function displayforecast(response){
     forecastHTML = forecastHTML + `</div>`;
     forecastElement.innerHTML =forecastHTML;
 }
+
+let celsiusTemperature= null;
+
+let form =document.querySelector("#search-city");
+form.addEventListener("submit", submit);
+
+let fahrenheitlink=document.querySelector("#fahrenheit-link");
+fahrenheitlink.addEventListener("click", showFahrenheitTemperature);
+
+let celsiuslink=document.querySelector("#celsius-link");
+celsiuslink.addEventListener("click", showCelsiusTemperature);
+
 
 
 search("Tehran");
